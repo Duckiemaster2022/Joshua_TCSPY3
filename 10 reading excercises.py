@@ -23,6 +23,7 @@ def h3():
 
 
 def h4():
+    print("goodbye.... :(.... forever... :)")
     wn.bye()
 
 
@@ -63,17 +64,42 @@ def draw_housing():
 draw_housing()
 
 
+tess.penup()
+tess.forward(40)
+tess.left(90)
+tess.forward(50)
+tess.shape("circle")
+tess.shapesize(3)
+tess.fillcolor("green")
 
+
+state_num = 0
+
+
+def advance_state_machine():
+    global state_num
+    if state_num == 0:
+        tess.forward(70)
+        tess.fillcolor("yellow")
+        state_num = 1
+    elif state_num == 1:
+        tess.forward(70)
+        tess.fillcolor("red")
+        state_num = 2
+    else:
+        tess.back(140)
+        tess.fillcolor("green")
+        state_num = 0
+
+wn.onkey(advance_state_machine, "space")
 # wn.onkey(h1, "Up")
 # wn.onkey(h2, "Left")
 # wn.onkey(h3, "Right")
-# wn.onkey(h4, "q")
+wn.onkey(h4, "q")
 # # wn.onclick(h5)
 # tess.onclick(handler_for_tess)
 # alex.onclick(handler_for_alex)
-
-
-h6()
+# h6()
 
 wn.listen()
 wn.mainloop()
