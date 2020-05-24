@@ -9,13 +9,13 @@ def function_test(tuples):
 
 
 def func_2():
-    print("Question 2...  idk")
+    print("Question 2...  a {0} is generalization of a {1}".format("pair", "tuple"))
 
 
 def func_3():
     print("Question 3...  a pair is a kind of tuple")
 
 
-print(function_test(tuples))
+# print(function_test(tuples))
 func_2()
 func_3()

@@ -26,8 +26,9 @@ def h4():
     wn.bye()
 
 
-# def h5(x, y):
-#     tess.goto(x, y)
+def h5(x, y):
+    wn.title("Got click at coords. {0}, {1}".format(x, y))
+    tess.goto(x, y)
 
 
 def handler_for_tess(x, y):
@@ -38,8 +39,8 @@ def handler_for_tess(x, y):
 
 def handler_for_alex(x, y):
     wn.title("alex clicked at {0}, {1}".format(x, y))
-    alex.left(42)
-    alex.forward(30)
+    alex.right(84)
+    alex.forward(50)
 
 
 def h6():
@@ -98,12 +99,17 @@ wn.onkey(advance_state_machine, "space")
 # wn.onkey(h1, "Up")
 # wn.onkey(h2, "Left")
 # wn.onkey(h3, "Right")
-wn.onkey(h4, "q")
-# # wn.onclick(h5)
+# wn.onkey(h4, "q")
+# wn.onclick(h5)
 # tess.onclick(handler_for_tess)
 # alex.onclick(handler_for_alex)
 # h6()
 
-
+# turtle.fd(100)
+# turtle.lt(90)
+# turtle.fd(100)
+# turtle.goto(-3, 20)
+# turtle.goto(-3, 20)
+# turtle.fd(200)
 wn.listen()
 wn.mainloop()

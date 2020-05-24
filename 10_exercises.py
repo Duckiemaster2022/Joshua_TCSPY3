@@ -13,6 +13,7 @@ shape = 0
 size = 3
 state_num = 0
 state_num_2 = 2
+speed = 3
 
 
 def h1():
@@ -36,12 +37,6 @@ def h5(x, y):
     tess.goto(x, y)
 
 
-def h6():
-    tess.forward(100)
-    tess.left(56)
-    wn.ontimer(h6, 200)
-
-
 def color_r():
     tess.color("red")
 
@@ -56,22 +51,24 @@ def color_g():
 
 def size_plus():
     global pen
-    wn.title("tess pensize {0}".format(pen))
     if pen >= 20:
+        wn.title("tess pensize {0}".format(pen))
         return
     else:
         pen += 1
         tess.pensize(pen)
+        wn.title("tess pensize {0}".format(pen))
 
 
 def size_minus():
     global pen
-    wn.title("tess pensize {0}".format(pen))
     if pen <= 0:
+        wn.title("tess pensize {0}".format(pen))
         return
     else:
         pen += -1
         tess.pensize(pen)
+        wn.title("tess pensize {0}".format(pen))
 
 
 def tess_shape():
@@ -92,10 +89,12 @@ def tess_shape():
 def tess_size_u():
     global size
     if size >= 20:
+        wn.title("tess shape size {0}".format(size))
         return
     else:
         size += 1
         tess.shapesize(size)
+        wn.title("tess shape size {0}".format(size))
 
 
 def tess_size_d():
@@ -108,16 +107,33 @@ def tess_size_d():
         tess.shapesize(size)
 
 
-def handler_for_tess(x, y):
-    wn.title("tess clicked at {0}, {1}".format(x, y))
-    tess.left(42)
-    tess.forward(30)
+def speed_up():
+    global speed
+    if speed >= 10:
+        wn.title("tess speed {0}".format(speed))
+        return
+    else:
+        speed += 1
+        tess.speed(speed)
+        wn.title("tess speed {0}".format(speed))
 
 
-def handler_for_alex(x, y):
-    wn.title("alex clicked at {0}, {1}".format(x, y))
-    alex.left(42)
-    alex.forward(30)
+def speed_down():
+    global speed
+    if speed <= 1:
+        wn.title("tess speed {0}".format(speed))
+        return
+    else:
+        speed -= 1
+        tess.speed(speed)
+        wn.title("tess speed {0}".format(speed))
+
+
+def speed_zero():
+    global speed
+    speed = 0
+    tess.speed(0)
+    wn.title("tess speed {0}".format(speed))
 
 
 def draw_housing():
@@ -299,6 +315,10 @@ def excer_5():
     advance_state_machine_4()
 
 
+def excer_6():
+    print("the anwser i got is.... *drumrolllllll* 7")
+
+
 # excer_2()
 # excer_3()
 # excer_4()
@@ -306,8 +326,11 @@ def excer_5():
 # excer_6()
 
 
-wn.onkey(tess_size_u, "u")
-wn.onkey(tess_size_d, "j")
+wn.onkey(speed_zero, "0")
+wn.onkey(tess_size_u, "1")
+wn.onkey(tess_size_d, "2")
+wn.onkey(speed_up, "4")
+wn.onkey(speed_down, "3")
 wn.onkey(size_plus, "=")
 wn.onkey(size_minus, "-")
 wn.onkey(advance_state_machine, "space")
@@ -319,9 +342,6 @@ wn.onkey(h2, "Left")
 wn.onkey(h3, "Right")
 wn.onkey(h4, "q")
 wn.onclick(h5)
-tess.onclick(handler_for_tess)
-alex.onclick(handler_for_alex)
-# h6()
 
 
 wn.listen()
