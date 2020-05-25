@@ -62,7 +62,7 @@ def draw_housing():
     tess.end_fill()
 
 
-draw_housing()
+# draw_housing()
 
 
 tess.penup()
@@ -93,14 +93,14 @@ def advance_state_machine():
         state_num = 0
 
 
-wn.onkey(advance_state_machine, "space")
+# wn.onkey(advance_state_machine, "space")
 
 
-# wn.onkey(h1, "Up")
-# wn.onkey(h2, "Left")
-# wn.onkey(h3, "Right")
-# wn.onkey(h4, "q")
-# wn.onclick(h5)
+wn.onkey(h1, "Up")
+wn.onkey(h2, "Left")
+wn.onkey(h3, "Right")
+wn.onkey(h4, "q")
+wn.onclick(h5)
 # tess.onclick(handler_for_tess)
 # alex.onclick(handler_for_alex)
 # h6()

@@ -120,20 +120,13 @@ def speed_up():
 
 def speed_down():
     global speed
-    if speed <= 1:
+    if speed <= 0:
         wn.title("tess speed {0}".format(speed))
         return
     else:
         speed -= 1
         tess.speed(speed)
         wn.title("tess speed {0}".format(speed))
-
-
-def speed_zero():
-    global speed
-    speed = 0
-    tess.speed(0)
-    wn.title("tess speed {0}".format(speed))
 
 
 def draw_housing():
@@ -291,10 +284,6 @@ def red():
     wn.ontimer(green, 2000)
 
 
-def advance_state_machine_4():
-    green()
-
-
 def excer_2():
     init_stoplight()
     advance_state_machine_2()
@@ -312,11 +301,11 @@ def excer_4():
 
 def excer_5():
     init_stoplight_2()
-    advance_state_machine_4()
+    green()
 
 
 def excer_6():
-    print("the anwser i got is.... *drumrolllllll* 7")
+    print("the anwser i got is.... *drumrolllllll* 11")
 
 
 # excer_2()
@@ -325,24 +314,25 @@ def excer_6():
 # excer_5()
 # excer_6()
 
+def keybinds():
+    wn.onkey(tess_size_u, "1")
+    wn.onkey(tess_size_d, "2")
+    wn.onkey(speed_up, "4")
+    wn.onkey(speed_down, "3")
+    wn.onkey(size_plus, "=")
+    wn.onkey(size_minus, "-")
+    wn.onkey(advance_state_machine, "space")
+    wn.onkey(color_r, "r")
+    wn.onkey(color_b, "b")
+    wn.onkey(color_g, "g")
+    wn.onkey(h1, "Up")
+    wn.onkey(h2, "Left")
+    wn.onkey(h3, "Right")
+    wn.onkey(h4, "q")
+    wn.onclick(h5)
 
-wn.onkey(speed_zero, "0")
-wn.onkey(tess_size_u, "1")
-wn.onkey(tess_size_d, "2")
-wn.onkey(speed_up, "4")
-wn.onkey(speed_down, "3")
-wn.onkey(size_plus, "=")
-wn.onkey(size_minus, "-")
-wn.onkey(advance_state_machine, "space")
-wn.onkey(color_b, "b")
-wn.onkey(color_r, "r")
-wn.onkey(color_g, "g")
-wn.onkey(h1, "Up")
-wn.onkey(h2, "Left")
-wn.onkey(h3, "Right")
-wn.onkey(h4, "q")
-wn.onclick(h5)
 
+keybinds()
 
 wn.listen()
 wn.mainloop()
