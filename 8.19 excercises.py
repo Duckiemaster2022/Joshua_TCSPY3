@@ -75,6 +75,7 @@ def count_letters_2(fruit, letter):
             count += 1
     return count
 
+
 def count_letters_3_epic_version(fruit, letter):
     count = 0
     found = -1
@@ -83,7 +84,9 @@ def count_letters_3_epic_version(fruit, letter):
         count += 1
     return count
 
+
 # print(count_letters_3_epic_version("banana", "a"))
+
 
 def percentages(e, everything_else):
     total = (e + everything_else)
@@ -227,5 +230,3 @@ test_suite()
 
 
 # removing_all_substrings_in_a_string_2("banana", "an")
-import math
-math.ceil()
