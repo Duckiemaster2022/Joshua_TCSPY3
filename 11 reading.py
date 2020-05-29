@@ -13,20 +13,20 @@
 #
 # for (i, v) in enumerate(["banana", "apple", "pear", "lemon"]):
 #     print(i, v)
-
-
+#
+#
 # def double_stuff(a_list):
 #     for (idx, val) in enumerate(a_list):
 #         a_list[idx] = val * 2
 #     return a_list
-
+#
 # things = [2, 5, 9]
 # print(double_stuff(things))
 #
 #
 # mylist = ["hi", "bye", "lie", "hi"]
 # print(mylist.count("hi"))
-
+#
 # def double_stuff_2(a_list):
 #     new_list = []
 #     for value in a_list:
@@ -47,15 +47,3 @@
 # alex.lt(90)
 # alex.fd(30)
 # wn.mainloop()
-
-
-a = [1, 2, 3]
-b = a[:]
-b[0] = 5
-
-print("""a = [1, 2, 3] b is then 
-assigned to the slice of a (containing 
-all of a), then be is changed to [5, 2,
-3], but since b was assigned to the 
-slice a not the same object it does not 
-change a """)
