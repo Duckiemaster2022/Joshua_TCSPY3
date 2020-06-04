@@ -1,5 +1,6 @@
 import sys
 
+
 def test(did_pass):
     linenum = sys._getframe(1).f_lineno
     if did_pass:
@@ -10,16 +11,16 @@ def test(did_pass):
 
 
 def test_suite():
-    test(add_vectors([1, 1], [1, 1]) == [2, 2])
-    test(add_vectors([1, 2], [1, 4]) == [2, 6])
-    test(add_vectors([1, 1, 1], [1, 2, 3]) == [2, 3, 4])
-    test(add_vectors([1, 2, 1], [1, 4, 3]) == [2, 6, 4])
-    test(scalar_mult(5, [1, 2]) == [5, 10])
-    test(scalar_mult(3, [1, 0, -1]) == [3, 0, -3])
-    test(scalar_mult(7, [3, 0, 5, 11, 2]) == [21, 0, 35, 77, 14])
-    test(dot_product([1, 1], [1, 1]) == 2)
-    test(dot_product([1, 2], [1, 4]) == 9)
-    test(dot_product([1, 2, 1], [1, 4, 3]) == 12)
+    # test(add_vectors([1, 1], [1, 1]) == [2, 2])
+    # test(add_vectors([1, 2], [1, 4]) == [2, 6])
+    # test(add_vectors([1, 1, 1], [1, 2, 3]) == [2, 3, 4])
+    # test(add_vectors([1, 2, 1], [1, 4, 3]) == [2, 6, 4])
+    # test(scalar_mult(5, [1, 2]) == [5, 10])
+    # test(scalar_mult(3, [1, 0, -1]) == [3, 0, -3])
+    # test(scalar_mult(7, [3, 0, 5, 11, 2]) == [21, 0, 35, 77, 14])
+    # test(dot_product([1, 1], [1, 1]) == 2)
+    # test(dot_product([1, 2], [1, 4]) == 9)
+    # test(dot_product([1, 2, 1], [1, 4, 3]) == 12)
     test(exer_10("i am old are u old is anyone else old", "old", "new") == "i am new are u new is anyone else new")
 
 
@@ -28,7 +29,7 @@ def exer_1():
     print("""    the three arguments of range 
     are (start, stop, and step), if start is
     less than stop, and the step is < 0 it returns 
-    the a blank list, if start and stop are equal 
+    a blank list, if start and stop are equal 
     it also returns a blank list, the same goes for
     if start is greater than stop and step is > 0""")
 
@@ -63,7 +64,7 @@ def exer_4():
     that = this
     print("Test2:{0}".format(this is that))
     print("""    this and that use two different 
-    string objects unti this is a asigned to
+    string objects until this is a asigned to
     that is then using the same string object,
     that this is using""")
 
@@ -118,6 +119,14 @@ def dot_product(a_list, b_list):
         return temp_6
 
 
+def dot_product_2(u, v):
+    sum = 0
+    for i in range(len(u)):
+        product = u[i] * v[i]
+        sum += product
+        return sum
+
+
 def exer_9():
     song = "The rain in Spain..."
     print(" ".join(song.split()))
@@ -125,14 +134,14 @@ def exer_9():
     print("its the same")
 
 
-def exer_10(b_list, repla, new):
-    a_list = b_list[:]
+def exer_10(s, old, new):
+    a_list = s[:]
     for i in a_list:
-        if repla not in a_list:
+        if old not in a_list:
             break
-        index = a_list.index(repla)
-        a_list = a_list[:index] + a_list[len(repla) + index:]
-        a_list = a_list[:index] + new + "" + a_list[(len(repla) - len(new)) + index:]
+        index = a_list.index(old)
+        a_list = a_list[:index] + a_list[len(old) + index:]
+        a_list = a_list[:index] + new + "" + a_list[(len(old) - len(new)) + index:]
     return a_list
 
 
@@ -141,18 +150,19 @@ def exer_11():
         print("before swap statement: x:", x, "y:", y)
         (x, y) = (y, x)
         print("after swap statement: x:", x, "y:", y)
-
-
+        return x, y
     a = ["this", "is", "fun"]
     b = [2, 3, 4]
     swap_correct(a, b)
     print("this is a and b but their values haven't changed", a, b)
 
 
-    def swap(x, y):
-        return y, x
-    a, b = swap(["this", "is", "fun"], [2, 3, 4])
-    print(a, b)
+def swap(x, y):
+    return y, x
+
+
+# c, d = swap(["this", "is", "fun"], [2, 3, 4])
+# print(c, d)
 
 
 # exer_1()
@@ -160,5 +170,5 @@ def exer_11():
 # exer_3()
 # exer_4()
 # exer_9()
-test_suite()
+# test_suite()
 # exer_11()
