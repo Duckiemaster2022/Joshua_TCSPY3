@@ -40,20 +40,20 @@ def do_my_sum(xs):
     return sums
 
 
-def time_stuff():
-    sz = 10000000
-    testdata = range(sz)
-    t0 = time.clock()
-    my_result = do_my_sum(testdata)
-    t1 = time.clock()
-    print("mr_result = {0}, (time taken = {1:.4f} seconds").format(my_result, t1 - t0)
-    t2 = time.clock()
-    their_result = sum(testdata)
-    t3 = time.clock()
-    print("their_result = {0} (time taken = {1:.4f} seconds").format(their_result, t3 - t2)
+
+sz = 10000000
+testdata = range(sz)
+t0 = time.clock()
+my_result = do_my_sum(testdata)
+t1 = time.clock()
+print("my_result = {0}, (time taken = {1:.4f} seconds").format(my_result, t1 - t0)
+t2 = time.clock()
+their_result = sum(testdata)
+t3 = time.clock()
+print("their_result = {0} (time taken = {1:.4f} seconds").format(their_result, t3 - t2)
 
 
-print(adding.add(5, 4))
+# print(adding.add(5, 4))
 # print(make_random_ints(5, 1, 13))
 # print(make_random_ints_2())
 # xs = make_random_ints_no_dups(5, 1, 10000000)
