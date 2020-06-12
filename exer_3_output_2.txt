@@ -1,0 +1,32 @@
+    1 import turtle
+    2 wn = turtle.Screen()
+    3 wn.bgcolor("white")
+    4 bob = turtle.Turtle()
+    5 
+    6 
+    7 def ex_thirteen(t, n):
+    8     t.speed(0)
+    9     for i in range(n):
+   10         t.penup()
+   11         deg = 360 / n
+   12         t.lt(deg)
+   13         t.fd(100)
+   14         t.stamp()
+   15         t.back(100)
+   16 
+   17 
+   18 def ex_fourteen():
+   19     print("bale", "turn", "dole", "nest")
+   20 
+   21 
+   22 def ex_fifteen():
+   23     print("pythons,", "no it is a boa,", "No")
+   24 
+   25 
+   26 # ex_thirteen(bob, 1000)
+   27 # ex_fourteen()
+   28 # ex_fifteeen()
+   29 
+   30 
+   31 wn.mainloop()
+   32 

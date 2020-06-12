@@ -9,17 +9,17 @@ cal = calendar.TextCalendar()
 def test_suite():
     test(exer_7(",", ";", "this,that,andsomeotherthing") ==
          "this;that;andsomeotherthing")
-    test(exer_7(" ", "**", "Words will now be separated by stars.") ==
+    test(exer_7(" ", "**", "Words will now        be separated by stars.") ==
     "Words**will**now**be**separated**by**stars.")
 
 
 def exer_1():
     cal.setfirstweekday(3)
     # print(cal.pryear(2020))
-    cal.setfirstweekday(0)
+    cal.setfirstweekday(3)
     print(cal.formatmonth(2020, 2))
-    d = calendar.LocaleTextCalendar(6, "JAPANESE")
-    d.pryear(2012)
+    # d = calendar.LocaleTextCalendar(6, "JAPANESE")
+    # d.pryear(2012)
 
 
 def exer_2():
@@ -52,9 +52,11 @@ def exer_7(old, new, s):
 def exer_8():
     print("string.punctuation is missing the punctuation ’ ")
     print("it gave me a string like this:", "’now’", "rather than this:", "now")
-# exer_1()
+
+
+exer_1()
 # exer_2()
 # exer_3()
-exer_8()
+# exer_8()
 
-# test_suite()
+test_suite()
