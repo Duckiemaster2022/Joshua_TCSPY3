@@ -48,7 +48,6 @@ def exer_4():
     infile.close()
 
 
+# exer_2("text.txt")
 # exer_3()
 exer_4()
-
-# exer_2("text.txt")

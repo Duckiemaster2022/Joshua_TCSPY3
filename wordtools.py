@@ -32,6 +32,7 @@ def cleanword(s):
     punctuation = r"""’!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"""
     s_sans_punct = ""
     for letter in s:
+        letter.lower()
         if letter not in punctuation:
             s_sans_punct += letter
     return s_sans_punct
