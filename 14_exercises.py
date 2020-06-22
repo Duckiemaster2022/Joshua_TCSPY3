@@ -7,32 +7,34 @@ my_tickets = [[7, 17, 37, 19, 23, 43],
 
 
 def testsuite():
-    # test(merge2([10, 7, 3, 4], [10, 3, 7, 0, 9]) == [10, 7, 3])
-    # test(merge2([10], [9]) == [])
-    # test(merge2([10, -3, 3, 4], [10, -3, 7, 0, 9]) == [10, -3])
-    # test(merge2(["help"], [10, 3, 7, 0, 9]) == [])
-    # test(merge3([10, 9, 8, 7], [6, 5, 4, 3]) == [10, 9, 8, 7])
-    # test(merge4([10, 9, 8, 7], [6, 5, 4, 3]) == [6, 5, 4, 3])
-    # test(merge5([5, 7, 11, 11, 11, 12, 13], [7, 8, 11]) == [5, 11, 11, 12, 13])
-    # test(not share_diagonal(5, 2, 2, 0))
-    # test(share_diagonal(5, 2, 3, 0))
-    # test(share_diagonal(5, 2, 4, 3))
-    # test(share_diagonal(5, 2, 4, 1))
-    # test(not col_clashes([6, 4, 2, 0, 5], 4))
-    # test(not col_clashes([6, 4, 2, 0, 5, 7, 1, 3], 7))
-    # test(col_clashes([0,1], 1))
-    # test(col_clashes([5,6], 1))
-    # test(col_clashes([6,5], 1))
-    # test(col_clashes([0,6,4,3], 3))
-    # test(col_clashes([5,0,7], 2))
-    # test(not col_clashes([2,0,1,3], 1))
-    # test(col_clashes([2,0,1,3], 2))
-    # test(not has_clashes([6, 4, 2, 0, 5, 7, 1, 3]))  # Solution from above
-    # test(has_clashes([4, 6, 2, 0, 5, 7, 1, 3]))  # Swap rows of first two
-    # test(has_clashes([0, 1, 2, 3]))  # Try small 4x4 board
-    # test(not has_clashes([2, 0, 3, 1]))
-    # test(lotto_check([42, 4, 7, 11, 1, 13], [2, 5, 7, 11, 13, 17]) == 3)
-    # test(lotto_check2(my_tickets, [2, 5, 7, 11, 13, 17]) == [2, 3, 6, 2])
+    test(merge_1([1, 3, 4, 5, 5], [1, 2, 4, 5, 6]) == [1, 4, 5])
+    test(merge_1([1, 2, 5, 5, 8], [2, 8, 11]) == [2, 8])
+    test(merge_1([10], [9]) == [])
+    test(merge_1([-4, -3, 3, 4], [-4, -3, 0, 7, 9]) == [-4, -3])
+    test(merge_1([1], [0, 3, 5, 7, 9]) == [])
+    test(merge_2([10, 9, 8, 7], [6, 5, 4, 3]) == [10, 9, 8, 7])
+    test(merge_3([10, 9, 8, 7], [6, 5, 4, 3]) == [6, 5, 4, 3])
+    test(merge_4([1, 2, 3, 4, 5, 6], [1, 2, 3, 5, 7, 9]) == [4, 6, 7, 9])
+    test(merge_5([5, 7, 11, 11, 11, 12, 13], [7, 8, 11]) == [5, 11, 11, 12, 13])
+    test(not share_diagonal(5, 2, 2, 0))
+    test(share_diagonal(5, 2, 3, 0))
+    test(share_diagonal(5, 2, 4, 3))
+    test(share_diagonal(5, 2, 4, 1))
+    test(not col_clashes([6, 4, 2, 0, 5], 4))
+    test(not col_clashes([6, 4, 2, 0, 5, 7, 1, 3], 7))
+    test(col_clashes([0, 1], 1))
+    test(col_clashes([5, 6], 1))
+    test(col_clashes([6, 5], 1))
+    test(col_clashes([0, 6, 4, 3], 3))
+    test(col_clashes([5, 0, 7], 2))
+    test(not col_clashes([2, 0, 1, 3], 1))
+    test(col_clashes([2, 0, 1, 3], 2))
+    test(not has_clashes([6, 4, 2, 0, 5, 7, 1, 3]))  # Solution from above
+    test(has_clashes([4, 6, 2, 0, 5, 7, 1, 3]))  # Swap rows of first two
+    test(has_clashes([0, 1, 2, 3]))  # Try small 4x4 board
+    test(not has_clashes([2, 0, 3, 1]))
+    test(lotto_check([42, 4, 7, 11, 1, 13], [2, 5, 7, 11, 13, 17]) == 3)
+    test(lotto_check2(my_tickets, [2, 5, 7, 11, 13, 17]) == [2, 3, 6, 2])
     test(return_prime([42, 4, 7, 11, 1, 13]) == 3)
 
 
@@ -57,41 +59,103 @@ def merge(xs, ys):
             yi += 1
 
 
-def merge2(xs, ys):
+def merge_1(xs, ys):
     """ merge sorted lists xs and ys. Return a sorted result """
     result = []
-    for i in xs:
-        if i in ys:
-            result.append(i)
-        continue
-    return result
+    xi = 0
+    yi = 0
+    while True:
+        if xi >= len(xs):           # If xs list is finished, # Add remaining items from ys
+            return result           # And we're done.
+        if yi >= len(ys):           # Same again, but swap roles
+            return result
+        if xs[xi] == ys[yi]:
+            result.append(xs[xi])
+            xi += 1
+            yi += 1
+        elif xs[xi] < ys[yi]:
+            xi += 1
+        else:
+            yi += 1
 
 
-def merge3(xs, ys):
-    """ merge sorted lists xs and ys. Return a sorted result """
+def merge_2(xs, ys):
     result = []
-    for i in xs:
-        if i not in ys:
-            result.append(i)
-        continue
-    return result
+    xi = 0
+    yi = 0
+    while True:
+        if xi >= len(xs):
+            return result
+        if yi >= len(ys):
+            result.extend(xs[xi])
+            return result
+
+        if xs[xi] != ys[yi]:
+            result.append(xs[xi])
+            xi += 1
+            yi += 1
+        elif xs[xi] == ys[yi]:
+            xi += 1
+            yi += 1
 
 
-def merge4(xs, ys):
-    """ merge sorted lists xs and ys. Return a sorted result """
+def merge_3(xs, ys):
     result = []
-    for i in ys:
-        if i not in xs:
-            result.append(i)
-        continue
-    return result
+    xi = 0
+    yi = 0
+    while True:
+        if xi >= len(xs):
+            result.extend(ys[yi:])
+            return result
+        if yi >= len(ys):
+            return result
+        if xs[xi] != ys[yi]:
+            result.append(ys[yi])
+            xi += 1
+            yi += 1
+        elif xs[xi] == ys[yi]:
+            xi += 1
+            yi += 1
 
 
-def merge5(xs, ys):
-    for i in ys:
-        if i in xs:
-            xs.remove(i)
-    return xs
+def merge_4(xs, ys):
+    result = []
+    xi = 0
+    yi = 0
+    while True:
+        if xi >= len(xs):
+            result.extend(ys[yi:])
+            return result
+        if yi >= len(ys):
+            result.extend(xs[xi:])
+            return result
+        if xs[xi] == ys[yi]:
+            xi += 1
+            yi += 1
+        elif xs[xi] < ys[yi]:
+            result.append(xs[xi])
+            xi += 1
+        elif xs[xi] > ys[yi]:
+            result.append(ys[yi])
+            yi += 1
+
+
+def merge_5(xs, ys):
+    result = xs[:]
+    xi = 0
+    yi = 0
+    while True:
+        if xi >= len(xs):
+            return result
+        if yi >= len(ys):
+            return result
+        if xs[xi] == ys[yi]:
+            result.remove(xs[xi])
+            yi += 1
+        elif xs[xi] < ys[yi]:
+            xi += 1
+        else:
+            yi += 1
 
 
 def share_diagonal(x0, y0, x1, y1):
@@ -190,4 +254,3 @@ def return_prime(xs):
 # draw = lotto_math()
 testsuite()
 # main()
-
