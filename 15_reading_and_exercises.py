@@ -75,19 +75,26 @@ class Smsstore:
     def delete(self,index):
         index -= 1
         yes_or_no = input("Are you sure you want to delete this? Y or N")
-        if yes_or_no == "Y":
+        if yes_or_no == "Y" or yes_or_no == "y":
             p.inbox.pop(index)
             print("deleted message {0}".format(index + 1))
-        else:
+        elif yes_or_no == "n" or yes_or_no == "N":
             print("canceled delete")
+        else:
+            print("invalid answer")
+            p.delete(index)
+
 
     def clear(self):
         yes_or_no = input("Are you sure you want to clear your inbox? Y or N")
-        if yes_or_no == "Y":
+        if yes_or_no == "Y" or yes_or_no == "y":
             p.inbox = []
             print("Inbox has been cleared!")
+        elif yes_or_no == "n" or yes_or_no == "N":
+            print("canceled delete")
         else:
-            print("Inbox clearing has been canceled")
+            print("invalid answer")
+            p.clear()
 
 
 p = Smsstore()
@@ -100,6 +107,7 @@ p.delete(1)
 message2 = p.get_message(2)
 p.clear()
 p.get_message(1)
+print(p.inbox)
 #
 # p = Point(-7, 3)
 # q = Point(4, 6)
