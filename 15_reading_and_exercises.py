@@ -27,21 +27,21 @@ class Point:
     def reflect_x(self):
         return -self.y
 
-    def slope_from_origin(self, target):
+    def slope_from_origin(self,):
         """ask for help"""
         return self.y - self.x
 
     def get_line_to(self, pt):
         slope = (self.y - pt.y) / (self.x - pt.x)
-        return (slope, self.y - self.x * slope)
+        return slope, self.y - self.x * slope
 
 
-class Sms_store:
+class Smsstore:
     def __init__(self):
         self.inbox = []
 
-    def add_new_arrival(self, from_number, time_arrived, text_of_SMS):
-        result = ["unread", text_of_SMS, time_arrived, from_number]
+    def add_new_arrival(self, from_number, time_arrived, text_of_sms):
+        result = ["unread", text_of_sms, time_arrived, from_number]
         self.inbox.append(result)
 
     def message_count(self):
@@ -90,15 +90,14 @@ class Sms_store:
             print("Inbox clearing has been canceled")
 
 
-
-p = Sms_store()
+p = Smsstore()
 p.add_new_arrival(123, 1048, "hello my name is Biblert Bagbins")
 p.add_new_arrival(143, 1123, "goodbye Jonathon Smith")
 num = p.message_count()
 num_of_unread = p.get_unread_secrets(p.inbox)
 message = p.get_message(1)
 p.delete(1)
-message = p.get_message(2)
+message2 = p.get_message(2)
 p.clear()
 p.get_message(1)
 #
