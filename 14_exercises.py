@@ -5,38 +5,41 @@ my_tickets = [[7, 17, 37, 19, 23, 43],
               [2,  5,  7, 11, 13, 17],
               [13, 17, 37, 19, 23, 43]]
 
+prime_nums = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+
 
 def testsuite():
-    test(merge_1([1, 3, 4, 5, 5], [1, 2, 4, 5, 6]) == [1, 4, 5])
-    test(merge_1([1, 2, 5, 5, 8], [2, 8, 11]) == [2, 8])
-    test(merge_1([10], [9]) == [])
-    test(merge_1([-4, -3, 3, 4], [-4, -3, 0, 7, 9]) == [-4, -3])
-    test(merge_1([1], [0, 3, 5, 7, 9]) == [])
-    test(merge_2([10, 9, 8, 7], [6, 5, 4, 3]) == [10, 9, 8, 7])
-    test(merge_3([10, 9, 8, 7], [6, 5, 4, 3]) == [6, 5, 4, 3])
-    test(merge_4([1, 2, 3, 4, 5, 6], [1, 2, 3, 5, 7, 9]) == [4, 6, 7, 9])
-    test(merge_5([5, 7, 11, 11, 11, 12, 13], [7, 8, 11]) == [5, 11, 11, 12, 13])
-    test(not share_diagonal(5, 2, 2, 0))
-    test(share_diagonal(5, 2, 3, 0))
-    test(share_diagonal(5, 2, 4, 3))
-    test(share_diagonal(5, 2, 4, 1))
-    test(not col_clashes([6, 4, 2, 0, 5], 4))
-    test(not col_clashes([6, 4, 2, 0, 5, 7, 1, 3], 7))
-    test(col_clashes([0, 1], 1))
-    test(col_clashes([5, 6], 1))
-    test(col_clashes([6, 5], 1))
-    test(col_clashes([0, 6, 4, 3], 3))
-    test(col_clashes([5, 0, 7], 2))
-    test(not col_clashes([2, 0, 1, 3], 1))
-    test(col_clashes([2, 0, 1, 3], 2))
-    test(not has_clashes([6, 4, 2, 0, 5, 7, 1, 3]))  # Solution from above
-    test(has_clashes([4, 6, 2, 0, 5, 7, 1, 3]))  # Swap rows of first two
-    test(has_clashes([0, 1, 2, 3]))  # Try small 4x4 board
-    test(not has_clashes([2, 0, 3, 1]))
-    test(lotto_check([42, 4, 7, 11, 1, 13], [2, 5, 7, 11, 13, 17]) == 3)
-    test(lotto_check2(my_tickets, [2, 5, 7, 11, 13, 17]) == [2, 3, 6, 2])
-    test(return_prime([42, 4, 7, 11, 1, 13]) == 3)
-
+    # test(merge_1([1, 3, 4, 5, 5], [1, 2, 4, 5, 6]) == [1, 4, 5])
+    # test(merge_1([1, 2, 5, 5, 8], [2, 8, 11]) == [2, 8])
+    # test(merge_1([10], [9]) == [])
+    # test(merge_1([-4, -3, 3, 4], [-4, -3, 0, 7, 9]) == [-4, -3])
+    # test(merge_1([1], [0, 3, 5, 7, 9]) == [])
+    # test(merge_2([10, 9, 8, 7], [6, 5, 4, 3]) == [10, 9, 8, 7])
+    # test(merge_3([10, 9, 8, 7], [6, 5, 4, 3]) == [6, 5, 4, 3])
+    # test(merge_4([1, 2, 3, 4, 5, 6], [1, 2, 3, 5, 7, 9]) == [4, 6, 7, 9])
+    # test(merge_5([5, 7, 11, 11, 11, 12, 13], [7, 8, 11]) == [5, 11, 11, 12, 13])
+    # test(not share_diagonal(5, 2, 2, 0))
+    # test(share_diagonal(5, 2, 3, 0))
+    # test(share_diagonal(5, 2, 4, 3))
+    # test(share_diagonal(5, 2, 4, 1))
+    # test(not col_clashes([6, 4, 2, 0, 5], 4))
+    # test(not col_clashes([6, 4, 2, 0, 5, 7, 1, 3], 7))
+    # test(col_clashes([0, 1], 1))
+    # test(col_clashes([5, 6], 1))
+    # test(col_clashes([6, 5], 1))
+    # test(col_clashes([0, 6, 4, 3], 3))
+    # test(col_clashes([5, 0, 7], 2))
+    # test(not col_clashes([2, 0, 1, 3], 1))
+    # test(col_clashes([2, 0, 1, 3], 2))
+    # test(not has_clashes([6, 4, 2, 0, 5, 7, 1, 3]))  # Solution from above
+    # test(has_clashes([4, 6, 2, 0, 5, 7, 1, 3]))  # Swap rows of first two
+    # test(has_clashes([0, 1, 2, 3]))  # Try small 4x4 board
+    # test(not has_clashes([2, 0, 3, 1]))
+    # test(lotto_check([42, 4, 7, 11, 1, 13], [2, 5, 7, 11, 13, 17]) == 3)
+    # test(lotto_check2(my_tickets, [2, 5, 7, 11, 13, 17]) == [2, 3, 6, 2])
+    # test(return_prime([42, 4, 7, 11, 1, 13]) == 3)
+    # test(prime_discover([[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43], [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43]], prime_nums) == [[47]])
+    test(lotto_check3(my_tickets) == 4)
 
 def merge(xs, ys):
     """ merge sorted lists xs and ys. Return a sorted result """
@@ -217,6 +220,7 @@ def lotto_math():
     rng = random.Random()
     posi_lotto_nums = list(range(1, 50))
     rng.shuffle(posi_lotto_nums)
+    print(posi_lotto_nums)
     return posi_lotto_nums
 
 
@@ -249,6 +253,51 @@ def return_prime(xs):
             else:
                 prime_nums += 1
     return prime_nums
+
+
+def return_prime_2(num):
+    if num > 1:
+        for i in range(2, num):
+            if (num % i) != 0:
+                return False
+        return True
+
+
+def prime_discover(num, prime_list):
+    result = []
+    yi = 0
+    xi = 0
+    for lists in num:
+        while True:
+            if xi >= len(lists):
+                result.append(prime_list[yi + 1:])
+                return result
+            lists.sort()
+            if lists[xi] > prime_list[yi]:
+                if return_prime_2(lists[xi]):
+                    result.append(prime_list[xi:xi + 1])
+                yi += 1
+                xi += 1
+            elif prime_list[yi] >= lists[xi]:
+                xi += 1
+            else:
+                xi += 1
+                yi += 1
+
+
+def lotto_check3(ticket_num):
+    win = lotto_math()
+    result = []
+    av_loss = 0
+    for lotto_tickets in ticket_num:
+        win_num = 0
+        for i in lotto_tickets:
+            if i in win:
+                win_num += 1
+        result.append(win_num)
+        if win_num <= 3:
+            av_loss += 1
+    return av_loss
 
 
 # draw = lotto_math()
