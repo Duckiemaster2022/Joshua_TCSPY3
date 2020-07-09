@@ -364,7 +364,7 @@ def hypotenuse(a, b):
 def slope(x1, y1, x2, y2):
     if x2 == x1:
         return "slope of vertical line is undefined"
-    return (y2 - y1) / (x2 - x1)
+
 
 
 def intercept(x1, y1, y2, x2):

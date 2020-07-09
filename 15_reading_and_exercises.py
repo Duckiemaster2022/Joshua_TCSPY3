@@ -40,9 +40,8 @@ class Smsstore:
     def __init__(self):
         self.inbox = []
 
-    def add_new_arrival(self, from_number, time_arrived, text_of_sms):
-        result = ["unread", text_of_sms, time_arrived, from_number]
-        self.inbox.append(result)
+    def add_new_arrival(self,status, from_number, time_arrived, text_of_sms):
+        self.inbox.append([status, text_of_sms, time_arrived, from_number])
 
     def message_count(self):
         print("You have {0} messages".format(len(p.inbox)))
@@ -52,25 +51,21 @@ class Smsstore:
         numbers = []
         for i in range(len(p.inbox)):
             if inbox[i][0] == "unread":
-                i += 1
-                numbers.append(i)
-            else:
-                numbers.append(-1)
-        if numbers[0] != -1:
-            print("Messages {0} are unread still".format(numbers))
+                j = i + 1
+                numbers.append(j)
+        if numbers == []:
+            print("there are no unread messages")
         else:
-            numbers.remove(-1)
+            print("message/s {0} is/are still unread".format(numbers))
         return numbers
 
     def get_message(self, index):
         index -= 1
         if index >= len(p.inbox):
             print("this message does not exist")
-            return "this message does not exist"
         else:
             p.inbox[index][0] = "read"
             print(p.inbox[index], 1)
-            return p.inbox[index]
 
     def delete(self,index):
         index -= 1
@@ -83,7 +78,6 @@ class Smsstore:
         else:
             print("invalid answer")
             p.delete(index)
-
 
     def clear(self):
         yes_or_no = input("Are you sure you want to clear your inbox? Y or N")
@@ -98,17 +92,25 @@ class Smsstore:
 
 
 p = Smsstore()
-p.add_new_arrival(123, 1048, "hello my name is Biblert Bagbins")
-p.add_new_arrival(143, 1123, "goodbye Jonathon Smith")
+p.add_new_arrival("unread", 123, 1048, "hello my name is Bilbert Bagbins")
+p.add_new_arrival("unread", 456, 1123, "goodbye Jonathon Smith")
+p.add_new_arrival("unread", 789, 1153, "CUCUMBERS ARE A FRUIT ACCORDING TO GOOGLE")
+p.add_new_arrival("unread", 101112, 623, "jefferey knows all")
+p.add_new_arrival("unread", 131415, 1111, "hosues could burn")
 num = p.message_count()
-num_of_unread = p.get_unread_secrets(p.inbox)
-message = p.get_message(1)
+p.get_unread_secrets(p.inbox)
+p.get_message(1)
+p.get_unread_secrets(p.inbox)
+p.get_message(2)
+p.get_unread_secrets(p.inbox)
+p.get_message(4)
+p.get_unread_secrets(p.inbox)
 p.delete(1)
 message2 = p.get_message(2)
 p.clear()
 p.get_message(1)
-print(p.inbox)
-#
+
+
 # p = Point(-7, 3)
 # q = Point(4, 6)
 # print(r)
