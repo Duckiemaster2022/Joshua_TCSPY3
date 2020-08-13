@@ -20,6 +20,7 @@ def testsuite():
     # l = Rectangle((0, 0), 10, 10)
     # test(l.hit_boxes(Point(10, 10), 10, 10))
 
+
 class Point:
     """point class represents and manupulates x,y coords"""
     def __init__(self, x=0, y=0):
@@ -53,6 +54,18 @@ class Point:
     def get_line_to(self, pt):
         slope = (self.y - pt.y) / (self.x - pt.x)
         return slope, self.y - self.x * slope
+
+    def __add__(self, other):
+        return Point(self.x + other.x. self.y + other.y)
+
+    def __mul__(self, other):
+        return self.x * other.x + self.y * other.y
+
+    def __rmul__(self, other):
+        return Point(other * self.x, other * self.y)
+
+    def reverse(self):
+        (self.x, self.y) = (self.y, self.x)
 
 
 class Rectangle:
@@ -128,6 +141,13 @@ def same_coordinates(c1, c2):
     return (c1.x == c2.x) and (c1.y == c2.y)
 
 
+def front_and_back(front):
+    import copy
+    back = copy.copy(front)
+    back.reverse()
+    print(str(front) + str(back))
+
+
 # box = Rectangle(Point(0, 0), 100, 200)
 # bomb = Rectangle(Point(100, 80), 5, 10)
 # print("box: ", box)
@@ -146,6 +166,7 @@ def same_coordinates(c1, c2):
 # print(same_coordinates(p1, p2))
 # box2 = copy.deepcopy(box)
 # print(box2 is box)
-
+p = Point(3, 4)
+front_and_back(p)
 
 testsuite()
