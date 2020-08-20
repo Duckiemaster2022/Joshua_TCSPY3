@@ -3,7 +3,6 @@ class Card:
     ranks = ["narf", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
 
     def __init__(self, suit=0, rank=0):
-        rank -= 1
         self.suit = suit
         self.rank = rank
 
@@ -77,16 +76,61 @@ class Deck:
     def is_empty(self):
         return self.cards == []
 
+    def deal(self, hands, num_cards=999):
+        num_hands = len(hands)
+        for i in range(num_cards):
+            if self.is_empty():
+                break  # Break if out of cards
+            card = self.pop()  # Take the top card
+            hand = hands[i % num_hands]  # Whose turn is next?
+            hand.add(card)  # Add the card to the hand
 
-red_deck = Deck()
-blue_deck = Deck()
-Deck.shuffle(red_deck)
-# Deck.print_deck(red_deck)
-print(red_deck)
-card1 = Card(1, 13)
-card4 = Card(2, 2)
-print(card4)
-card2 = Card(1, 3)
-card3 = Card(1, 12)
-print(card1, card3)
-print(card1 > card3)
+
+class Hand(Deck):
+    def __init__(self, name=""):
+       self.cards = []
+       self.name = name
+
+    def add(self, card):
+        self.cards.append(card)
+
+    def __str__(self):
+        s = "Hand " + self.name
+        if self.is_empty():
+            s += " is empty\n"
+        else:
+            s += " contains\n"
+        return s + Deck.__str__(self)
+
+
+class CardGame:
+    def __init__(self):
+        self.deck = Deck()
+        self.deck.shuffle()
+
+
+class OldMaidHand(Hand):
+    def remove_matches(self):
+        count = 0
+        original_cards = self.cards[:]
+        for card in original_cards:
+            match = Card(3 - card.suit, card.rank)
+            if match in self.cards:
+                self.cards.remove(card)
+                self.cards.remove(match)
+                # print("Hand {0}: {1} matches {2}".format(self.name, card, match))
+                count += 1
+        return count
+
+
+deck = Deck()
+deck.shuffle()
+hand = Hand("frank")
+deck.deal([hand], 5)
+print(hand)
+
+game = CardGame()
+hand = OldMaidHand("frank")
+game.deck.deal([hand], 13)
+# print(hand)
+hand.remove_matches()
