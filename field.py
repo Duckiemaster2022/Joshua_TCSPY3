@@ -28,27 +28,24 @@ class Field:
     def __str__(self):
         return "{0}".format("hi")
 
-    def total_score(self):
-        pass
+    def total_score(self, point_1, point_2):
+        return point_1 + point_2
 
-    def get_all_goal_points(self):
-        red_goal_points = 0
-        blue_goal_points = 0
+    def get_all_goal_points(self, color):
+        goal_points = 0
         for i in self.goals:
-            red_goal_points += Goal.get_points(i, "red")
-        for i in self.goals:
-            blue_goal_points += Goal.get_points(i, "blue")
-        return blue_goal_points, red_goal_points
+            goal_points += Goal.get_points(i, color)
+        return goal_points
 
-    def get_all_row_points(self):
-        red_rows = 0
-        blue_rows = 0
-        for i in self.rows:
-            red_rows += Row.get_row_owner()
-        print(red_rows)
+    def get_all_row_points(self, color):
+        points = 0
+        for row in self.rows:
+            if row.get_row_owner() == color:
+                points += 6
+        return points
 
-    def print_score(self):
-        pass
+    def print_score(self, tot_score, color):
+        print("{0} team scored {1} points".format(color, tot_score))
 
     def add_ball(self, goal_num, color):
         self.goals[goal_num].add_ball(color)
@@ -60,5 +57,7 @@ class Field:
         pass
 
 field1 = Field("skills")
-print(field1.get_all_goal_points())
-field1.get_all_row_points()
+goal_point = field1.get_all_goal_points("blue")
+rows_point = field1.get_all_row_points("blue")
+tot_score = field1.total_score(goal_point, rows_point)
+field1.print_score(tot_score, "blue")

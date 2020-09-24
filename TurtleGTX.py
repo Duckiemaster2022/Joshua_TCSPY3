@@ -2,10 +2,10 @@ import turtle
 import random
 rng = random.Random()
 scr = turtle.Screen()
-bilbo = turtle.Screen()
+bilbo = turtle.Turtle()
 
 
-class TurtleGTX:
+class TurtleGTX(turtle.Turtle):
     def __init__(self):
         self.bob = turtle.Turtle()
         self.break_down_num = rng.randrange(100, 2000)
@@ -72,3 +72,5 @@ turtle_stuff.backward(1)
 
 
 scr.mainloop()
+
+
